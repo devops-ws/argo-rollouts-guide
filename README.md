@@ -31,3 +31,27 @@ docker run -it --rm -v $HOME/.kube/:/root/.kube --network host ghcr.io/linuxsure
 |||
 |---|---|
 | [k9s](https://k9scli.io/) | K9s is a terminal based UI to interact with your Kubernetes clusters. |
+
+## 金丝雀部署
+部署 Rollout 以及 Service
+```shell
+kubectl apply -f https://raw.githubusercontent.com/devops-ws/learn-pipeline-go/master/argo/rollouts/rollout.yaml
+kubectl apply -f https://raw.githubusercontent.com/devops-ws/learn-pipeline-go/master/argo/rollouts/service.yaml
+```
+
+通过上面的步骤，会部署有 5 个 Pod 实例的应用。
+
+我们可以通过下面的命令在终端里观察到渐进式部署的过程：
+```shell
+kubectl argo rollouts get rollout rollouts-demo -w
+```
+
+也可以在 UI 界面上看到更详细的内容：
+```shell
+kubectl argo rollouts dashboard
+```
+
+通过下面的命令观察版本号的改变：
+```shell
+watch "curl http://localhost:30698/version -s"
+```
