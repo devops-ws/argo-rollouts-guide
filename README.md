@@ -16,8 +16,8 @@
 当 Kubernetes 环境就绪后，就可以通过下面的命令会在命名空间（`argo`）下安装最新版本的 `Argo Rollouts`：
 
 ```shell
-kubectl create namespace argo
-kubectl apply -n argo -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
+kubectl create namespace argo-rollouts
+kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
 ```
 
 如果你的环境访问 GitHub 时有网络问题，可以使用下面的命令来安装：
